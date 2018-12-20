@@ -2,13 +2,9 @@ import React, { Component } from "react";
 import { Message } from 'semantic-ui-react'
 import { observer } from "mobx-react";
 
-let title;
-let message;
 const ErrorMessage = observer(
   class ErrorMessage extends Component {
-    
-    state = { visible: true }
-    
+        
     handleDismiss = (e) => {
       this.setState({ visible: false });
     }
