@@ -100,15 +100,13 @@ class UserStore {
    * get all users
    */
   async getUsersList(pageNum, pageSize, search) {
-    return UsersService.getList(pageNum, pageSize, search)
-      .then((response) => {
-        this.userList = response.data.data[0].data;
-        this.userCount = response.data.data[0].count;        
-        return response.data.data[0].data;
+    try {
+      const response = await UsersService.getList(pageNum, pageSize, search);
+      this.userList = response.data.data[0].data;
+      this.userCount = response.data.data[0].count;  
+    } catch(err) {
+        console.log(err);
       }
-      ).catch(function (error) {
-        console.log(error);
-      });
   }
 
   /**
